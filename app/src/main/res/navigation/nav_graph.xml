@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="mk.ukim.finki.mpip.beautysaloon.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ThirdFragment"
+            app:destination="@id/ThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="mk.ukim.finki.mpip.beautysaloon.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_AppointmentForm"
+            app:destination="@id/AppointmentForm" />
+    </fragment>
+    <fragment
+        android:id="@+id/ThirdFragment"
+        android:name="mk.ukim.finki.mpip.beautysaloon.ThirdFragment"
+        android:label="@string/third_fragment_label"
+        tools:layout="@layout/fragment_third">
+
+        <action
+            android:id="@+id/action_ThirdFragment_to_AppointmentsList"
+            app:destination="@id/AppointmentsList"/>
+    </fragment>
+    <fragment
+        android:id="@+id/AppointmentForm"
+        android:name="mk.ukim.finki.mpip.beautysaloon.AppointmentForm"
+        android:label="@string/appointment_form_label"
+        tools:layout="@layout/fragment_appointment_form">
+    </fragment>
+    <fragment
+        android:id="@+id/AppointmentsList"
+        android:name="mk.ukim.finki.mpip.beautysaloon.AppointmentsList"
+        android:label="@string/appointments_list_label"
+        tools:layout="@layout/fragment_appointments_list">
+    </fragment>
+</navigation>
