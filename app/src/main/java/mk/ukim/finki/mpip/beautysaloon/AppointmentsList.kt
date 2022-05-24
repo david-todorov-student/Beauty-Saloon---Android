@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -15,6 +16,8 @@ import mk.ukim.finki.mpip.beautysaloon.api.SalonApi
 import mk.ukim.finki.mpip.beautysaloon.api.SalonApiClient
 import mk.ukim.finki.mpip.beautysaloon.databinding.FragmentAppointmentsListBinding
 import mk.ukim.finki.mpip.beautysaloon.models.Appointment
+
+import java.time.LocalDateTime
 import mk.ukim.finki.mpip.beautysaloon.models.AppointmentWrapper
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,18 +56,6 @@ class AppointmentsList : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-//        val data: MutableList<Appointment> = initList();
-//
-//        val recyclerView = view?.findViewById<RecyclerView>(R.id.appointments_recycler_view)
-//
-//        // Ova svojstvo se postavuva koga sme sigurni deka sekoj ITEM od listat ima fiksna golemina (shirina, visina)
-//        //recyclerView.setHasFixedSize(true)
-//
-//        recyclerView?.layoutManager = LinearLayoutManager(activity)
-//
-//        val recyclerViewAdapter = activity?.let { BasicRecyclerViewAdapter(it, data) }
-//
-//        recyclerView?.adapter = recyclerViewAdapter
     }
 
     override fun onCreateView(
@@ -72,7 +63,6 @@ class AppointmentsList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_appointmets_list, container, false)
         _binding = FragmentAppointmentsListBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -88,8 +78,9 @@ class AppointmentsList : Fragment() {
         recyclerView.adapter = view?.context?.let {
             BasicRecyclerViewAdapter(it, initList())
         }
-//        binding.buttonSeeAppointments.setOnClickListener {
-//            findNavController().navigate(R.id.action_ThirdFragment_to_AppointmentsList)
+
+//        recyclerView.getChildViewHolder(recyclerView).detailsButton.setOnClickListener {
+//            findNavController().navigate(R.id.action_AppointmentsList_to_AppointmentDetails)
 //        }
     }
 
