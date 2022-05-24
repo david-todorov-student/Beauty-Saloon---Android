@@ -2,17 +2,23 @@ package mk.ukim.finki.mpip.beautysaloon
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mk.ukim.finki.mpip.beautysaloon.adapters.BasicRecyclerViewAdapter
+import mk.ukim.finki.mpip.beautysaloon.api.SalonApi
+import mk.ukim.finki.mpip.beautysaloon.api.SalonApiClient
 import mk.ukim.finki.mpip.beautysaloon.databinding.FragmentAppointmentsListBinding
 import mk.ukim.finki.mpip.beautysaloon.models.Appointment
-import java.time.LocalDateTime
+import mk.ukim.finki.mpip.beautysaloon.models.AppointmentWrapper
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +42,8 @@ class AppointmentsList : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var salonApiClient: SalonApi
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,11 +115,28 @@ class AppointmentsList : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun initList(): MutableList<Appointment> {
-        return mutableListOf(
-            Appointment("Dimitar", "pedicure", "070/000-000", "dimitar@email.com", LocalDateTime.now()),
-            Appointment("Vlatko", "manicure", "071/111-111", "vlatko@email.com", LocalDateTime.now()),
-            Appointment("Stefan", "haircut", "072/222-222", "stefan@email.com", LocalDateTime.now()),
-            Appointment("Marko", "botox", "073/333-333", "marko@email.com", LocalDateTime.now())
-        )
+        salonApiClient = SalonApiClient.getSalonApi()!!;
+
+        salonApiClient.GetAllAppointmentsForDate("")
+            .enqueue(object : Callback<MutableList<Appointment>?> {
+            override fun onResponse(
+                call: Call<MutableList<Appointment>?>?,
+                response: Response<MutableList<Appointment>?>
+            ) {
+                val appointments: MutableList<Appointment>? = response.body()
+
+                recyclerView.adapter = view?.context?.let {
+                    BasicRecyclerViewAdapter(it, appointments!!)
+                }
+
+            }
+
+            override fun onFailure(call: Call<MutableList<Appointment>?>?, t: Throwable?) {
+                Toast.makeText(activity, "Error!", Toast.LENGTH_LONG).show()
+            }
+        })
+
+
+        return mutableListOf();
     }
 }

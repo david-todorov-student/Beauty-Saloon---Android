@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import mk.ukim.finki.mpip.beautysaloon.api.SalonApi
 import mk.ukim.finki.mpip.beautysaloon.databinding.FragmentSecondBinding
 import mk.ukim.finki.mpip.beautysaloon.databinding.FragmentThirdBinding
 
@@ -25,11 +26,11 @@ class ThirdFragment : Fragment() {
     private var param2: String? = null
 
     private var _binding: FragmentThirdBinding? = null
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var salonApiClient: SalonApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +55,9 @@ class ThirdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSeeAppointments.setOnClickListener {
+
+
+
             findNavController().navigate(R.id.action_ThirdFragment_to_AppointmentsList)
         }
     }
