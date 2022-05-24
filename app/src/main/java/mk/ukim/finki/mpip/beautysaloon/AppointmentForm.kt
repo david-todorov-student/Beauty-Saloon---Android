@@ -73,7 +73,7 @@ class AppointmentForm : Fragment() {
 
                 var appointment: Appointment = Appointment(clientName!!,
                     serviceDescription!!, phoneNumber!!, email!!,
-                    date!! + " " + time!!, 1)
+                    date!! + " " + time!!, 1, null)
 
                 salonApiClient = SalonApiClient.getSalonApi()!!;
 

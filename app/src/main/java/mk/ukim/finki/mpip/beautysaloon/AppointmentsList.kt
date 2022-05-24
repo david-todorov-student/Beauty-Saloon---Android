@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -16,9 +15,6 @@ import mk.ukim.finki.mpip.beautysaloon.api.SalonApi
 import mk.ukim.finki.mpip.beautysaloon.api.SalonApiClient
 import mk.ukim.finki.mpip.beautysaloon.databinding.FragmentAppointmentsListBinding
 import mk.ukim.finki.mpip.beautysaloon.models.Appointment
-
-import java.time.LocalDateTime
-import mk.ukim.finki.mpip.beautysaloon.models.AppointmentWrapper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -75,9 +71,13 @@ class AppointmentsList : Fragment() {
         recyclerView = requireView().findViewById(R.id.appointments_recycler_view)
         recyclerView.setHasFixedSize(true);
         recyclerView.layoutManager = LinearLayoutManager(view?.context)
-        recyclerView.adapter = view?.context?.let {
+
+        val adapter = view?.context?.let {
             BasicRecyclerViewAdapter(it, initList())
-        }
+        };
+
+
+        recyclerView.adapter = adapter;
 
 //        recyclerView.getChildViewHolder(recyclerView).detailsButton.setOnClickListener {
 //            findNavController().navigate(R.id.action_AppointmentsList_to_AppointmentDetails)

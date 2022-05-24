@@ -17,4 +17,7 @@ interface SalonApi {
 
     @POST("Appointment/CreateAppointment")
     fun createAppointment(@Body appointment: Appointment): Call<Appointment>
+
+    @POST("Appointment/MarkAppointmentAs")
+    fun markAppointmentAs(@Query("appointmentId") appointmentId: Int, @Query("approved") approved: Boolean): Call<Appointment>
 }

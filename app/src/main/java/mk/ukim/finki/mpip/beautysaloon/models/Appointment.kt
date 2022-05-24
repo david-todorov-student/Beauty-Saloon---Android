@@ -9,5 +9,6 @@ data class Appointment(val clientName: String,
                        val phoneNumber: String,
                        val email: String,
                        val dateTime: String,
-                       val statusId: Int) {
+                       val statusId: Int,
+                        val id: Int?) {
 }
