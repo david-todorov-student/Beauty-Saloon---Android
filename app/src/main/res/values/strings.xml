@@ -8,6 +8,7 @@
     <string name="appointment_form_label">Appointment Form</string>
     <string name="appointments_list_label">Appointments List</string>
     <string name="appointment_details_label">Appointment Details</string>
+    <string name="appointment_created_label">Appointment Created</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
