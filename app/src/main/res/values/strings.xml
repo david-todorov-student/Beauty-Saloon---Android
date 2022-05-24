@@ -2,9 +2,9 @@
     <string name="app_name">Beauty Saloon</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="third_fragment_label">Third Fragment</string>
+    <string name="first_fragment_label">Choose Role</string>
+    <string name="second_fragment_label">Client Home Page</string>
+    <string name="third_fragment_label">Employee Home Page</string>
     <string name="appointment_form_label">Appointment Form</string>
     <string name="appointments_list_label">Appointments List</string>
     <string name="appointment_details_label">Appointment Details</string>

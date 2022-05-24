@@ -8,9 +8,10 @@
 
     <TextView
         android:id="@+id/textview_second"
-        android:layout_width="212dp"
-        android:layout_height="32dp"
+        android:layout_width="282dp"
+        android:layout_height="75dp"
         android:text="Hello, customer! Would you like to make an appointment?"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/btn_CreateAppointment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

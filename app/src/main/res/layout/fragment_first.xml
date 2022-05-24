@@ -8,9 +8,10 @@
 
     <TextView
         android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="241dp"
+        android:layout_height="75dp"
         android:text="What role would you like to continue as?"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/btn_Client"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

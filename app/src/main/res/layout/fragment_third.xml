@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
         android:text="Hello Employee"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
