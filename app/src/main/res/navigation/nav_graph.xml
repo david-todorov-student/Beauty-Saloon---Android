@@ -49,5 +49,15 @@
         android:name="mk.ukim.finki.mpip.beautysaloon.AppointmentsList"
         android:label="@string/appointments_list_label"
         tools:layout="@layout/fragment_appointments_list">
+
+        <action
+            android:id="@+id/action_AppointmentsList_to_AppointmentDetails"
+            app:destination="@id/AppointmentDetails"/>
+    </fragment>
+    <fragment
+        android:id="@+id/AppointmentDetails"
+        android:name="mk.ukim.finki.mpip.beautysaloon.AppointmentDetails"
+        android:label="@string/appointment_details_label"
+        tools:layout="@layout/fragment_appointment_details">
     </fragment>
 </navigation>

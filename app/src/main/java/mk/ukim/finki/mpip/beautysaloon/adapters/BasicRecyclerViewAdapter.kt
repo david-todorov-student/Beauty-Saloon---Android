@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import mk.ukim.finki.mpip.beautysaloon.R
 import mk.ukim.finki.mpip.beautysaloon.models.Appointment
 
+
 class BasicRecyclerViewAdapter(val context: Context, val allAppointments: MutableList<Appointment>):
     RecyclerView.Adapter<BasicRecyclerViewAdapter.ViewHolder>() {
 
@@ -25,6 +26,8 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
         }
     }
 
+//    lateinit var viewHolder: ViewHolder
+
     override fun getItemViewType(position: Int): Int {
         return R.layout.recycler_view_row
     }
@@ -32,6 +35,8 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
 
+//        viewHolder = ViewHolder(view)
+//        return viewHolder
         return ViewHolder(view)
     }
 
@@ -40,6 +45,7 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
 
         holder.clientName.text = currentAppointment.clientName
         holder.dateTime.text = currentAppointment.dateTime.toString()
+
     }
 
     override fun getItemCount(): Int {
