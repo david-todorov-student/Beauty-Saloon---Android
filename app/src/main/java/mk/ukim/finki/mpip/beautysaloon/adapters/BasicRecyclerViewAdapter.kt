@@ -34,8 +34,11 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
         val phoneNumber: TextView
         val serviceDesc: TextView
         val textEnded: TextView
-        val buttonApprove: Button
-        val buttonReject: Button
+
+        val textApproved: TextView
+        val textDenied: TextView
+        val textWaiting: TextView
+
 
         init {
             clientName = view.findViewById(R.id.row_clientName)
@@ -43,8 +46,11 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
             phoneNumber = view.findViewById(R.id.row_phoneNumber)
             serviceDesc = view.findViewById(R.id.row_serviceDesc)
             textEnded = view.findViewById(R.id.textEnd)
-            buttonApprove = view.findViewById(R.id.buttonApprove)
-            buttonReject = view.findViewById(R.id.buttonReject)
+
+            textApproved = view.findViewById(R.id.textApproved)
+            textDenied = view.findViewById(R.id.textDenied)
+            textWaiting = view.findViewById(R.id.textWaiting)
+
         }
     }
 
@@ -72,50 +78,30 @@ class BasicRecyclerViewAdapter(val context: Context, val allAppointments: Mutabl
         holder.serviceDesc.text = currentAppointment.serviceDescription
 
         holder.textEnded.isVisible = false;
+        holder.textWaiting.isVisible = false;
+        holder.textDenied.isVisible = false;
+        holder.textApproved.isVisible = false;
 
-        if (currentAppointment.statusId == 2){
-            holder.buttonApprove.isVisible = false;
-            holder.buttonReject.isVisible = true;
-
-        }else if (currentAppointment.statusId == 1){
-            holder.buttonApprove.isVisible = true;
-            holder.buttonReject.isVisible = false;
+        if (currentAppointment.statusId == 1){
+            holder.textApproved.isVisible = false;
+            holder.textDenied.isVisible = false;
+            holder.textWaiting.isVisible = true;
+        }else if (currentAppointment.statusId == 2){
+            holder.textApproved.isVisible = true;
+            holder.textDenied.isVisible = false;
+            holder.textWaiting.isVisible = false;
+        }else if (currentAppointment.statusId == 3){
+            holder.textApproved.isVisible = false;
+            holder.textDenied.isVisible = true;
+            holder.textWaiting.isVisible = false;
         }
 
         if(LocalDateTime.parse(currentAppointment.dateTime).isBefore(LocalDateTime.now())){
-            holder.buttonApprove.isVisible = false;
-            holder.buttonReject.isVisible = false;
+            holder.textApproved.isVisible = false;
+            holder.textDenied.isVisible = false;
+            holder.textWaiting.isVisible = false;
 
             holder.textEnded.isVisible = true;
-        }
-
-        //Ne rab :/
-        holder.buttonReject.setOnClickListener {
-            salonApiClient = SalonApiClient.getSalonApi()!!;
-
-            val call: Call<Appointment> = salonApiClient.markAppointmentAs(currentAppointment.id!!, true)
-
-            call.enqueue(object : Callback<Appointment?> {
-                override fun onResponse(call: Call<Appointment?>?, response: Response<Appointment?>) {
-                    // this method is called when we get response from our api.
-                    Toast.makeText(context, "Appointment marked as approved", Toast.LENGTH_SHORT)
-                        .show()
-
-                    holder.buttonApprove.isVisible = false;
-                }
-
-                override fun onFailure(call: Call<Appointment?>?, t: Throwable) {
-                    Toast.makeText(context, t.message, Toast.LENGTH_SHORT)
-                        .show()
-                }
-            })
-
-        }
-
-        //Ne rab :/
-        holder.buttonReject.setOnClickListener {
-
-
         }
 
     }

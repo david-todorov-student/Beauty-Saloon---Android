@@ -72,6 +72,6 @@
 
         <action
             android:id="@+id/action_AppointmentCreated_to_SecondFragment"
-            app:destination="@id/SecondFragment"/>
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

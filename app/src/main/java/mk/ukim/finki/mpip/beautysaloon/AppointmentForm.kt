@@ -65,34 +65,33 @@ class AppointmentForm : Fragment() {
 
         view.findViewById<Button>(R.id.btnMakeAppointment)
             .setOnClickListener {
-//                clientName = view.findViewById<EditText>(R.id.etClientName).text.toString()
-//                serviceDescription = view.findViewById<EditText>(R.id.etServiceDescription).text.toString()
-//                phoneNumber = view.findViewById<EditText>(R.id.etPhoneNumber).text.toString()
-//                email = view.findViewById<EditText>(R.id.etEmail).text.toString()
-//                date = view.findViewById<EditText>(R.id.etDate).text.toString()
-//                time = view.findViewById<EditText>(R.id.etTime).text.toString()
-//
-//                var appointment: Appointment = Appointment(clientName!!,
-//                    serviceDescription!!, phoneNumber!!, email!!,
-//                    date!! + " " + time!!, 1, null)
-//
-//                salonApiClient = SalonApiClient.getSalonApi()!!;
-//
-//                val call: Call<Appointment> = salonApiClient.createAppointment(appointment)
-//
-//                call.enqueue(object : Callback<Appointment?> {
-//                    override fun onResponse(call: Call<Appointment?>?, response: Response<Appointment?>) {
-//                        // this method is called when we get response from our api.
-//                        Toast.makeText(activity, "Appointment, created wait for email", Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//
-//                    override fun onFailure(call: Call<Appointment?>?, t: Throwable) {
-//                        Toast.makeText(activity, t.message, Toast.LENGTH_SHORT)
-//                            .show()
-//                    }
-//                })
-                findNavController().navigate(R.id.action_AppointmentForm_to_AppointmentCreated)
+                clientName = view.findViewById<EditText>(R.id.etClientName).text.toString()
+                serviceDescription = view.findViewById<EditText>(R.id.etServiceDescription).text.toString()
+                phoneNumber = view.findViewById<EditText>(R.id.etPhoneNumber).text.toString()
+                email = view.findViewById<EditText>(R.id.etEmail).text.toString()
+                date = view.findViewById<EditText>(R.id.etDate).text.toString()
+                time = view.findViewById<EditText>(R.id.etTime).text.toString()
+
+                var appointment: Appointment = Appointment(clientName!!,
+                    serviceDescription!!, phoneNumber!!, email!!,
+                    date!! + " " + time!!, 1, null)
+
+                salonApiClient = SalonApiClient.getSalonApi()!!;
+
+                val call: Call<Appointment> = salonApiClient.createAppointment(appointment)
+
+                call.enqueue(object : Callback<Appointment?> {
+                    override fun onResponse(call: Call<Appointment?>?, response: Response<Appointment?>) {
+                        // this method is called when we get response from our api.
+                        findNavController().navigate(R.id.action_AppointmentForm_to_AppointmentCreated)
+
+                    }
+
+                    override fun onFailure(call: Call<Appointment?>?, t: Throwable) {
+                        Toast.makeText(activity, t.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                })
             }
     }
 

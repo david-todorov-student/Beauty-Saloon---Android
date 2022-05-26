@@ -72,28 +72,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/buttonApprove"
-            android:layout_width="309dp"
-            android:layout_height="65dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="20dp"
-            android:text="Approve Term"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/buttonReject"
-            android:layout_width="313dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="20dp"
-            android:text="Reject Term"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
         <TextView
             android:id="@+id/textEnd"
             android:layout_width="313dp"
@@ -102,9 +80,48 @@
             android:layout_marginTop="100dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:text="Term Ended"
+            android:text="Term Ended!"
             android:textSize="20sp"
             android:textColor="@color/purple_200"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textApproved"
+            android:layout_width="313dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Term is approved!"
+            android:textSize="20sp"
+            android:textColor="@color/teal_200"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textDenied"
+            android:layout_width="313dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Term is denied!"
+            android:textSize="20sp"
+            android:textColor="#E91E63"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textWaiting"
+            android:layout_width="313dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="Term is waiting for approval.."
+            android:textSize="20sp"
+            android:textColor="#FFC107"
             android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
